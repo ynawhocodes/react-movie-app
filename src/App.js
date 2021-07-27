@@ -1,40 +1,27 @@
 import React from 'react';
 
-function Food( {name, price}) {
-  return (
-    <div>
-      <p>name: {name}</p>
-      <p>{price}</p>
-    </div>
-  );
-}
-function App() {
-  return (
-    <div>
-      {foodList.map(props => (<Food key={props.id} name={props.name} price={props.price}/> ))}
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    count: 0,
+  };
+
+  add = () => {
+    this.setState(current => ({count: current.count + 1}));
+  }
+  minus = () => {
+    this.setState(current => ({count: current.count - 1}))
+  }
+  render() {
+    return (
+      <>
+      <p>number: {this.state.count}</p>
+      <button onClick={this.add}>+</button>
+      <button onClick={this.minus}>-</button>
+      </>
+    )
+  }
 }
 
-const foodList = [
-  {
-    id: 1,
-    name: "apple",
-    price: 5000, 
-    rating: 4,
-  },
-  {
-    id: 1,
-    name: "banana",
-    price: 2000, 
-    rating: 3.5,
-  },
-  {
-    id: 1,
-    name: "lemon",
-    price: 10000, 
-    rating: 3,
-  },
 
-]
+
 export default App;
